@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+            android:id="@+id/tagDataTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/open"
+        android:text="Start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+    android:id="@+id/close"
+        android:text="Close"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+
+</LinearLayout>

@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+        <!--  This is the main content -->
+        <RelativeLayout
+            android:id="@+id/base_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_margin_15"
+            android:background="@drawable/layer"
+            android:padding="@dimen/layout_padding_30">
+
+            <TextView
+                android:id="@+id/text_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/baseSpeed"
+                android:textSize="@dimen/text_size_20" />
+
+            <Spinner
+                android:id="@+id/base_Speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/text_speed"
+                android:entries="@array/base"
+                android:textAlignment="center"
+                android:theme="@style/itemSpinnerStyle" />
+
+            <TextView
+                android:id="@+id/text_session"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/base_Speed"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:text="@string/session"
+                android:textSize="@dimen/text_size_20" />
+
+            <Spinner
+                android:id="@+id/session"
+                android:layout_width="@dimen/layout_width_150"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/base_Speed"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:layout_toRightOf="@+id/text_session"
+                android:entries="@array/session"
+                android:theme="@style/itemSpinnerStyle"></Spinner>
+
+            <TextView
+                android:id="@+id/text_q"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_session"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:text="@string/qValue"
+                android:textSize="@dimen/text_size_20" />
+
+            <Spinner
+                android:id="@+id/q"
+                android:layout_width="@dimen/layout_width_200"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_session"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:layout_toRightOf="@+id/text_q"
+                android:entries="@array/q"
+                android:theme="@style/itemSpinnerStyle"></Spinner>
+
+            <TextView
+                android:id="@+id/text_inventory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_q"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:text="@string/inventory"
+                android:textSize="@dimen/text_size_20" />
+
+            <Spinner
+                android:id="@+id/inventory"
+                android:layout_width="@dimen/layout_width_200"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_q"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:layout_toRightOf="@+id/text_inventory"
+                android:entries="@array/inventory"
+                android:theme="@style/itemSpinnerStyle" />
+
+            <Button
+                android:id="@+id/base_query"
+                android:layout_width="@dimen/layout_width_140"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_inventory"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:text="@string/query"
+                android:textAllCaps="false"
+                android:textSize="@dimen/text_size_20" />
+
+            <Button
+                android:id="@+id/base_config"
+                android:layout_width="@dimen/layout_width_140"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_inventory"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:layout_toRightOf="@+id/base_query"
+                android:text="@string/config"
+                android:textAllCaps="false"
+                android:textSize="@dimen/text_size_20" />
+
+        </RelativeLayout>
+
+        <!--  This is the title label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_marginLeft_30"
+            android:background="@android:color/white"
+            android:padding="@dimen/layout_padding_5"
+            android:text="@string/epc_base_param"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_23" />
+
+        <!--  This is the main content -->
+        <RelativeLayout
+            android:id="@+id/frequency_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/base_layout"
+            android:layout_margin="@dimen/layout_margin_15"
+            android:background="@drawable/layer"
+            android:padding="@dimen/layout_padding_30">
+
+            <Spinner
+                android:id="@+id/frequency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/frequency"
+                android:textAlignment="center"
+                android:theme="@style/itemSpinnerStyle" />
+
+            <Button
+                android:id="@+id/frequency_query"
+                android:layout_width="@dimen/layout_width_140"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frequency"
+                android:textAllCaps="false"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:text="@string/query"
+                android:textSize="@dimen/text_size_20" />
+
+            <Button
+                android:id="@+id/frequency_config"
+                android:layout_width="@dimen/layout_width_140"
+                android:textAllCaps="false"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frequency"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:layout_toRightOf="@+id/frequency_query"
+                android:text="@string/config"
+                android:textSize="@dimen/text_size_20" />
+
+        </RelativeLayout>
+
+        <!--  This is the title label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/base_layout"
+            android:layout_marginLeft="@dimen/layout_marginLeft_30"
+            android:background="@android:color/white"
+            android:padding="@dimen/layout_padding_5"
+            android:text="@string/work_frequency"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_23" />
+
+        <!--  This is the main content -->
+        <RelativeLayout
+            android:id="@+id/auto_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/frequency_layout"
+            android:layout_margin="@dimen/layout_margin_15"
+            android:background="@drawable/layer"
+            android:padding="@dimen/layout_padding_30">
+
+            <Spinner
+                android:id="@+id/auto_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/opera"
+                android:textAlignment="center"
+                android:theme="@style/itemSpinnerStyle" />
+
+            <TextView
+                android:id="@+id/text_auto_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/auto_mode"
+                android:text="@string/auto_time"
+                android:textSize="@dimen/text_size_20" />
+
+            <EditText
+                android:id="@+id/auto_time"
+                android:layout_width="@dimen/layout_width_70"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/text_auto_time"
+                android:layout_toRightOf="@+id/text_auto_time"
+                android:text="0"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_size_20" />
+
+            <TextView
+                android:id="@+id/auto_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/auto_time"
+                android:text="@string/auto_time_unit" />
+
+            <Button
+                android:id="@+id/auto_query"
+                android:layout_width="@dimen/layout_width_140"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_auto_time"
+                android:textAllCaps="false"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:text="@string/query"
+                android:textSize="@dimen/text_size_20" />
+
+            <Button
+                android:id="@+id/auto_config"
+                android:layout_width="@dimen/layout_width_140"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_auto_time"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:textAllCaps="false"
+                android:layout_toRightOf="@+id/auto_query"
+                android:text="@string/config"
+                android:textSize="@dimen/text_size_20" />
+
+        </RelativeLayout>
+
+        <!--  This is the title label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/frequency_layout"
+            android:layout_marginLeft="@dimen/layout_marginLeft_30"
+            android:background="@android:color/white"
+            android:padding="@dimen/layout_padding_5"
+            android:text="@string/auto_free"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_23" />
+
+        <!--  This is the main content -->
+        <RelativeLayout
+            android:id="@+id/rfid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/auto_layout"
+            android:layout_margin="@dimen/layout_margin_15"
+            android:background="@drawable/layer"
+            android:padding="@dimen/layout_padding_30">
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="@dimen/layout_width_150"
+                android:layout_height="wrap_content"
+                android:entries="@array/ant"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_size_23"
+                android:theme="@style/itemSpinnerStyle"></Spinner>
+
+            <Button
+                android:id="@+id/ant_query"
+                android:layout_width="@dimen/layout_width_140"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner1"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:textAllCaps="false"
+                android:text="@string/query"
+                android:textSize="@dimen/text_size_20" />
+
+            <Button
+                android:id="@+id/ant_config"
+                android:layout_width="@dimen/layout_width_140"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner1"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:textAllCaps="false"
+                android:layout_toRightOf="@+id/ant_query"
+                android:text="@string/config"
+                android:textSize="@dimen/text_size_20" />
+
+        </RelativeLayout>
+
+        <!--  This is the title label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/auto_layout"
+            android:layout_marginLeft="@dimen/layout_marginLeft_30"
+            android:background="@android:color/white"
+            android:padding="@dimen/layout_padding_5"
+            android:text="@string/ant_frequency"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_23" />
+
+        <!--  This is the main content -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rfid_layout"
+            android:layout_margin="@dimen/layout_margin_15"
+            android:background="@drawable/layer"
+            android:paddingLeft="@dimen/layout_padding_30"
+            android:paddingTop="@dimen/layout_padding_30"
+            android:paddingRight="@dimen/layout_padding_30"
+            android:paddingBottom="@dimen/layout_padding_15">
+
+            <TextView
+                android:id="@+id/text_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filter_time"
+                android:textSize="@dimen/text_size_23" />
+
+            <EditText
+                android:id="@+id/filter_time"
+                android:layout_width="@dimen/layout_width_140"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/text_filter"
+                android:layout_toRightOf="@+id/text_filter"
+                android:text="0"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_size_23" />
+
+            <TextView
+                android:id="@+id/filter_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/filter_time"
+                android:text="@string/auto_time_unit" />
+
+            <TextView
+                android:id="@+id/text_rssi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_filter"
+                android:layout_marginTop="@dimen/layout_marginTop_20"
+                android:text="@string/RSSI"
+                android:textSize="@dimen/text_size_23" />
+
+            <EditText
+                android:id="@+id/rssi_value"
+                android:layout_width="@dimen/layout_width_140"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/filter_time"
+                android:layout_alignBaseline="@+id/text_rssi"
+                android:layout_toRightOf="@+id/text_rssi"
+                android:text="0"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_size_23" />
+
+            <Button
+                android:id="@+id/up_query"
+                android:layout_width="@dimen/layout_width_140"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_rssi"
+                android:textAllCaps="false"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:text="@string/query"
+                android:textSize="@dimen/text_size_20" />
+
+            <Button
+                android:id="@+id/up_config"
+                android:layout_width="@dimen/layout_width_140"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:layout_below="@+id/text_rssi"
+                android:layout_marginTop="@dimen/layout_marginTop_10"
+                android:layout_toRightOf="@+id/up_query"
+                android:text="@string/config"
+                android:textSize="@dimen/text_size_20" />
+
+        </RelativeLayout>
+
+        <!--  This is the title label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rfid_layout"
+            android:layout_marginLeft="@dimen/layout_marginLeft_30"
+            android:background="@android:color/white"
+            android:padding="@dimen/layout_padding_5"
+            android:text="@string/up_param"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_23" />
+    </RelativeLayout>
+</ScrollView>

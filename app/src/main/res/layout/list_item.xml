@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="@dimen/layout_width_70"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layer"
+        android:gravity="center"
+        android:text="@string/index"
+        android:textSize="@dimen/text_size_23" />
+
+    <TextView
+        android:layout_width="@dimen/layout_width_60"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layer"
+        android:gravity="center"
+        android:text="@string/type"
+        android:textSize="@dimen/text_size_23" />
+
+    <TextView
+        android:layout_width="@dimen/layout_width_300"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layer"
+        android:gravity="center"
+        android:text="@string/epc"
+        android:textSize="@dimen/text_size_23" />
+
+    <TextView
+        android:layout_width="@dimen/layout_width_300"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layer"
+        android:gravity="center"
+        android:text="@string/tid"
+        android:textSize="@dimen/text_size_23" />
+
+    <TextView
+        android:layout_width="@dimen/layout_width_300"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layer"
+        android:gravity="center"
+        android:text="@string/userData"
+        android:textSize="@dimen/text_size_23" />
+
+    <TextView
+        android:layout_width="@dimen/layout_width250"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layer"
+        android:gravity="center"
+        android:text="@string/reserveData"
+        android:textSize="@dimen/text_size_23" />
+
+    <TextView
+        android:layout_width="@dimen/layout_width_150"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layer"
+        android:gravity="center"
+        android:text="@string/totalCount"
+        android:textSize="@dimen/text_size_23" />
+
+    <TextView
+        android:layout_width="@dimen/layout_width_80"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layer"
+        android:gravity="center"
+        android:text="@string/rssi"
+        android:textSize="@dimen/text_size_23" />
+</LinearLayout>

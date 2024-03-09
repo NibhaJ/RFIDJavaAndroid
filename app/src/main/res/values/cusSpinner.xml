@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="base">
+        <item>0|Tari=25us，FM0，LHF=40KHz</item>
+        <item>1|Dense Reader Mode</item>
+        <item>2|Tari=25us，Miller4，LHF=300KHz</item>
+        <item>3|Fast reading mode</item>
+        <item>4|Tari=20us，Miller2，LHF=320KHz</item>
+        <item>5|Tari=6.25us，FM0，LHF=640KHz</item>
+        <item>6|Tari=20us，Miller4，LHF=320KHz</item>
+        <item>7|Tari=6.25us，Miller4，LHF=400KHz</item>
+        <item>10|Tari=12.5us，Miller4，LHF=250KHz</item>
+        <item>11|Tari=6.25us，Miller4，LHF=250KHz</item>
+        <item>12|Tari=12.5us，Miller4，LHF=300KHz</item>
+        <item>13|Tari=6.25us，Miller4，LHF=300KHz</item>
+        <item>Auto</item>
+    </string-array>
+    <string-array name="session">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="q">
+        <item>0|Single</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4|Multi</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+    </string-array>
+    <string-array name="inventory">
+        <item>A</item>
+        <item>B</item>
+        <item>A|B</item>
+    </string-array>
+    <string-array name="opera">
+        <item>Close</item>
+        <item>Open</item>
+    </string-array>
+
+    <string-array name="AutoFrequency">
+        <item>Manual</item>
+        <item>Auto</item>
+    </string-array>
+
+    <string-array name="frequency">
+        <item>Gb920_925</item>
+        <item>Gb840_845</item>
+        <item>Gb840_845_920_925</item>
+        <item>FCC902_928</item>
+        <item>ETS|866_868</item>
+        <item>JP916_8_920_4</item>
+        <item>TW922_25_927_75</item>
+        <item>ID923_125_925_125</item>
+        <item>RUS866_6_867_4</item>
+        <item>TEST</item>
+    </string-array>
+
+    <string-array name="cus_mode">
+        <item>不匹配</item>
+        <item>EPC</item>
+        <item>TID</item>
+        <item>UserData</item>
+    </string-array>
+
+    <string-array name="cus_gjb_mode">
+        <item>不匹配</item>
+        <item>TID</item>
+        <item>EPC</item>
+        <item>安全区</item>
+        <item>UserData</item>
+    </string-array>
+
+    <string-array name="cus_write_area">
+        <item>保留区</item>
+        <item>EPC区</item>
+        <item>TID区</item>
+        <item>UserData区</item>
+    </string-array>
+
+    <string-array name="lock_area">
+        <item>灭活密码区</item>
+        <item>访问密码区</item>
+        <item>EPC区</item>
+        <item>TID区</item>
+        <item>用户数据区</item>
+    </string-array>
+
+    <string-array name="lock_type">
+        <item>解锁</item>
+        <item>锁定</item>
+        <item>永久解锁</item>
+        <item>永久锁定</item>
+    </string-array>
+
+    <string-array name="ant">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+    </string-array>
+
+    <string-array name="baud">
+        <item>9600 bps</item>
+        <item>19200 bps</item>
+        <item>115200 bps</item>
+        <item>230400 bps</item>
+        <item>460800 bps</item>
+    </string-array>
+
+    <string-array name="gpo">
+        <item>低</item>
+        <item>高</item>
+    </string-array>
+    <string-array name="wi_state">
+        <item>WIFI禁用</item>
+        <item>WIFI启用</item>
+    </string-array>
+
+    <string-array name="wi_safe">
+        <item>WPA_PSK/WPA2-PS</item>
+        <item>WPA/WPA2</item>
+        <item>WEP</item>
+    </string-array>
+
+    <string-array name="wi_encryption">
+        <item>自动</item>
+        <item>TKIP</item>
+        <item>AES</item>
+    </string-array>
+
+    <string-array name="gpi_port">
+        <item>GPI1</item>
+        <item>GPI2</item>
+        <item>GPI3</item>
+        <item>GPI4</item>
+        <item>GPI5</item>
+        <item>GPI6</item>
+    </string-array>
+
+    <string-array name="beep_status">
+        <item>停止</item>
+        <item>响</item>
+    </string-array>
+
+    <string-array name="beep_mode">
+        <item>响一次</item>
+        <item>常响</item>
+    </string-array>
+
+    <string-array name="start_condition">
+        <item>触发关闭</item>
+        <item>低电平触发</item>
+        <item>高电平触发</item>
+        <item>上升沿触发</item>
+        <item>下降沿触发</item>
+        <item>任意边沿触发</item>
+    </string-array>
+
+    <string-array name="stop_condition">
+        <item>不停止</item>
+        <item>低电平触发</item>
+        <item>高电平触发</item>
+        <item>上升沿触发</item>
+        <item>下降沿触发</item>
+        <item>任意边沿触发</item>
+        <item>延时停止</item>
+    </string-array>
+
+    <string-array name="connect">
+        <!--<item>TcpClient</item>-->
+        <!--<item>蓝牙连接</item>-->
+        <!--<item>BleBluetooth</item>-->
+        <!--<item>AndroidRs485</item>-->
+        <item>AndroidRs232</item>
+        <!--<item>AndroidUsbSerial</item>-->
+        <!--<item>Tcp服务器</item>-->
+    </string-array>
+
+    <string-array name="port">
+        <item>COM1</item>
+        <item>COM2</item>
+        <item>COM3</item>
+        <item>COM4</item>
+        <item>COM5</item>
+    </string-array>
+
+    <string-array name="android_port">
+        <item>COM1</item>
+        <item>COM2</item>
+        <item>COM3</item>
+        <item>COM4</item>
+        <item>COM5</item>
+    </string-array>
+
+    <string-array name="wg_formatter">
+        <item>韦根26</item>
+        <item>韦根34</item>
+        <item>韦根66</item>
+    </string-array>
+
+    <string-array name="wg_data">
+        <item>传输EPC末尾数据</item>
+        <item>传输TID末尾数据</item>
+    </string-array>
+
+    <string-array name="eas_area">
+        <item>匹配EPC区</item>
+        <item>匹配TID</item>
+        <item>匹配用户区</item>
+        <item>匹配保留区</item>
+    </string-array>
+
+    <string-array name="tid_read_mode">
+        <item>自适应</item>
+        <item>定长</item>
+    </string-array>
+
+    <string-array name="ltu">
+        <item>Ltu27</item>
+        <item>Ltu31</item>
+    </string-array>
+
+    <string-array name="read_6b_content">
+        <item>仅读TID</item>
+        <item>TID+用户数据</item>
+        <item>仅读用户数据</item>
+    </string-array>
+
+    <string-array name="cus_gb_mode">
+        <item>不匹配</item>
+        <item>TID</item>
+        <item>EPC</item>
+        <item>安全区</item>
+        <item>user00</item>
+        <item>user01</item>
+        <item>user02</item>
+        <item>user03</item>
+        <item>user04</item>
+        <item>user05</item>
+        <item>user06</item>
+        <item>user07</item>
+        <item>user08</item>
+        <item>user09</item>
+        <item>user10</item>
+        <item>user11</item>
+        <item>user12</item>
+        <item>user13</item>
+        <item>user14</item>
+        <item>user15</item>
+    </string-array>
+
+    <string-array name="cus_gb_user_mode">
+        <item>User0</item>
+        <item>User1</item>
+        <item>User2</item>
+        <item>User3</item>
+        <item>User4</item>
+        <item>User5</item>
+        <item>User6</item>
+        <item>User7</item>
+        <item>User8</item>
+        <item>User9</item>
+        <item>User10</item>
+        <item>User11</item>
+        <item>User12</item>
+        <item>User13</item>
+        <item>User14</item>
+        <item>User15</item>
+    </string-array>
+
+    <string-array name="cus_gb_write_mode">
+        <item>标签编码区</item>
+        <item>标签安全区</item>
+        <item>User0</item>
+        <item>User1</item>
+        <item>User2</item>
+        <item>User3</item>
+        <item>User4</item>
+        <item>User5</item>
+        <item>User6</item>
+        <item>User7</item>
+        <item>User8</item>
+        <item>User9</item>
+        <item>User10</item>
+        <item>User11</item>
+        <item>User12</item>
+        <item>User13</item>
+        <item>User14</item>
+        <item>User15</item>
+    </string-array>
+
+    <string-array name="cus_gjb_write_mode">
+        <item>标签编码区</item>
+        <item>标签安全区</item>
+        <item>用户数据区</item>
+    </string-array>
+
+
+    <string-array name="cus_gb_lock_group">
+        <item>标签信息区</item>
+        <item>标签编码区</item>
+        <item>标签安全区</item>
+        <item>User0</item>
+        <item>User1</item>
+        <item>User2</item>
+        <item>User3</item>
+        <item>User4</item>
+        <item>User5</item>
+        <item>User6</item>
+        <item>User7</item>
+        <item>User8</item>
+        <item>User9</item>
+        <item>User10</item>
+        <item>User11</item>
+        <item>User12</item>
+        <item>User13</item>
+        <item>User14</item>
+        <item>User15</item>
+    </string-array>
+
+    <string-array name="cus_gjb_lock_group">
+        <item>标签信息区</item>
+        <item>标签编码区</item>
+        <item>标签安全区</item>
+        <item>UserData</item>
+    </string-array>
+
+    <string-array name="cus_gb_lock_operation">
+        <item>可读可写</item>
+        <item>可读不可写</item>
+        <item>不可读可写</item>
+        <item>不可读不可写</item>
+        <item>安全模式1</item>
+        <item>安全模式2</item>
+        <item>安全模式3</item>
+    </string-array>
+
+    <string-array name="cus_gjb_lock_operation">
+        <item>可读可写</item>
+        <item>可读不可写</item>
+        <item>不可读可写</item>
+        <item>不可读不可写</item>
+    </string-array>
+
+    <string-array name="beep_switch">
+        <item>读写器控制</item>
+        <item>上位机控制</item>
+    </string-array>
+
+    <string-array name="frePoint">
+        <item>902.750</item>
+        <item>903.250</item>
+        <item>903.750</item>
+        <item>904.250</item>
+        <item>904.750</item>
+        <item>905.250</item>
+        <item>905.750</item>
+        <item>906.250</item>
+        <item>906.750</item>
+        <item>907.250</item>
+        <item>907.750</item>
+        <item>908.250</item>
+        <item>908.750</item>
+        <item>909.250</item>
+        <item>909.750</item>
+        <item>910.250</item>
+        <item>910.750</item>
+        <item>911.250</item>
+        <item>911.750</item>
+        <item>912.250</item>
+        <item>912.750</item>
+        <item>913.250</item>
+        <item>913.750</item>
+        <item>914.250</item>
+        <item>914.750</item>
+        <item>915.250</item>
+        <item>915.750</item>
+        <item>916.250</item>
+        <item>916.750</item>
+        <item>917.250</item>
+        <item>917.750</item>
+        <item>918.250</item>
+        <item>918.750</item>
+        <item>919.250</item>
+        <item>919.750</item>
+        <item>920.250</item>
+        <item>920.750</item>
+        <item>921.250</item>
+        <item>921.750</item>
+        <item>922.250</item>
+        <item>922.750</item>
+        <item>923.250</item>
+        <item>923.750</item>
+        <item>924.250</item>
+        <item>924.750</item>
+        <item>925.250</item>
+        <item>925.750</item>
+        <item>926.250</item>
+        <item>926.750</item>
+        <item>927.250</item>
+    </string-array>
+
+    <string-array name="cus_6b_area">
+        <item>UserData</item>
+    </string-array>
+
+    <!--    <string-array name="delayTime">-->
+    <!--        <item>300</item>-->
+    <!--        <item>600</item>-->
+    <!--        <item>900</item>-->
+    <!--        <item>1000</item>-->
+    <!--        <item>00</item>-->
+    <!--        <item>300</item>-->
+    <!--    </string-array>-->
+</resources>
