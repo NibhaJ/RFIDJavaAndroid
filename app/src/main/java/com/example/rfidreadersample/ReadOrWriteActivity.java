@@ -5,30 +5,20 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.MenuItem;
+
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.android.hdms.HDMSManager;
 import com.android.hdms.scanner.ScanManager;
-
-
 import com.example.rfidreadersample.entity.TagInfo;
-
 import com.example.rfidreadersample.util.GlobalClient;
 
+import com.example.rfidreadersample.util.RFIDReader;
 import com.gg.reader.api.dal.GClient;
 import com.gg.reader.api.dal.HandlerTag6bLog;
 import com.gg.reader.api.dal.HandlerTag6bOver;
@@ -70,42 +60,34 @@ import java.util.TimeZone;
 public class ReadOrWriteActivity extends Activity {
 
 
-
+    private RFIDReader rfidReader;
     private GClient client = GlobalClient.getClient();
     private boolean isClient = false;
-    private Map<String, TagInfo> tagInfoMap = new LinkedHashMap<String, TagInfo>();//去重数据源
-    private final List<TagInfo> tagInfoList = new ArrayList<TagInfo>();//适配器所需数据源
-    private Long index = 1l;//索引
+    private Map<String, TagInfo> tagInfoMap = new LinkedHashMap<String, TagInfo>();
+    private List<TagInfo> tagInfoList = new ArrayList<TagInfo>();
+    private Long index = 1l;
     private RecyclerViewAdapter adapter;
     private ParamEpcReadTid tidParam = null;
     private ParamEpcReadUserdata userParam = null;
     private ParamEpcReadReserved reserveParam = null;
-    private Param6bReadUserdata user6bParam = null;
+    //private Param6bReadUserdata user6bParam = null;
     private boolean[] isChecked = new boolean[]{false, false, false};//标识读0-epc与1-user
     private Handler mHandler = new Handler();
     private Handler soundHandler = new Handler();
     private Runnable r = null;
     private Runnable timeTask = null;
     private int time = 0;
-    private boolean isSound = true;
-    MenuItem gMenuItem = null;
+
+
     private boolean isReader = false;
     private SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
-    private boolean keyPress = false;
+
+
     // Declare views
     private Button read;
     private Button stop;
     private Button clean;
-    private RadioGroup way;
-    private RadioGroup type;
-    private RadioButton single;
-    private RadioButton loop;
-    private RadioButton c;
-    private RadioButton b;
-    private TextView readCount;
-    private TextView tagCount;
-    private TextView speed;
-    private TextView timeCount;
+
     private LinearLayout tabHead;
     ScanManager mScanManager;
     @Override
@@ -116,33 +98,25 @@ public class ReadOrWriteActivity extends Activity {
         read = findViewById(R.id.read);
         stop = findViewById(R.id.stop);
         clean = findViewById(R.id.clean);
-        way = findViewById(R.id.way);
-        type = findViewById(R.id.type);
-        single = findViewById(R.id.single);
-        loop = findViewById(R.id.loop);
-        c = findViewById(R.id.c);
-        b = findViewById(R.id.b);
-        readCount = findViewById(R.id.readCount);
-        tagCount = findViewById(R.id.tagCount);
-        speed = findViewById(R.id.speed);
-        timeCount = findViewById(R.id.timeCount);
         tabHead = findViewById(R.id.tabHead);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         isClient = getIntent().getBooleanExtra("isClient", false);
         if (isClient) {
+            rfidReader = new RFIDReader(true);
             subHandler(GlobalClient.getClient());
         }
         initRecycleView();
-        //UtilSound.initSoundPool(this);
 
-        mScanManager = (ScanManager) HDMSManager.getInstance().getModuleManager(HDMSManager.MODULE_TYPE.SCANNER);
+        //mScanManager = (ScanManager) HDMSManager.getInstance().getModuleManager(HDMSManager.MODULE_TYPE.SCANNER);
         read.setOnClickListener(v -> {
-            readCard();
+            //readCard();
+            tagInfoMap = rfidReader.readCard();
+            Toast.makeText(ReadOrWriteActivity.this,tagInfoMap.toString(), Toast.LENGTH_LONG).show();
         });
         stop.setOnClickListener(v -> {
-            stopRead();
+            rfidReader.stopRead();
         });
         clean.setOnClickListener(v -> {
             cleanData();
@@ -233,133 +207,22 @@ public class ReadOrWriteActivity extends Activity {
         if (isClient) {
             if (!isReader) {
                 initPane();
-                if (type.getCheckedRadioButtonId() == R.id.c) {
-                    MsgBaseInventoryEpc msg = new MsgBaseInventoryEpc();
-                    msg.setAntennaEnable(EnumG.AntennaNo_1);
-                    if (way.getCheckedRadioButtonId() == R.id.single) {
-                        msg.setInventoryMode(EnumG.InventoryMode_Single);
-                    } else {
-                        msg.setInventoryMode(EnumG.InventoryMode_Inventory);
-                    }
-                    if (isChecked[0]) {
-                        tidParam = new ParamEpcReadTid();
-                        tidParam.setMode(EnumG.ParamTidMode_Auto);
-                        tidParam.setLen(6);
-                        msg.setReadTid(tidParam);
-                    }
-                    if (isChecked[1]) {
-                        userParam = new ParamEpcReadUserdata();
-                        userParam.setStart(0);
-                        userParam.setLen(6);
-                        msg.setReadUserdata(userParam);
-                    }
-                    if (isChecked[2]) {
-                        reserveParam = new ParamEpcReadReserved();
-                        reserveParam.setStart(0);
-                        reserveParam.setLen(4);
-                        msg.setReadReserved(reserveParam);
-                    }
-                    client.sendSynMsg(msg);
-                    if (0x00 == msg.getRtCode()) {
-                        Toast.makeText(ReadOrWriteActivity.this, "Start", Toast.LENGTH_LONG).show();
-                        isReader = true;
-                        computedSpeed();
-                        soundTask();
-                    } else {
-                        handlerStop.sendEmptyMessage(1);
-                        Toast.makeText(ReadOrWriteActivity.this, msg.getRtMsg(), Toast.LENGTH_LONG).show();
+                MsgBaseInventoryEpc msg = new MsgBaseInventoryEpc();
+                msg.setAntennaEnable(EnumG.AntennaNo_1);
+                msg.setInventoryMode(EnumG.InventoryMode_Inventory);
+                client.sendSynMsg(msg);
+                if (0x00 == msg.getRtCode()) {
+                    Toast.makeText(ReadOrWriteActivity.this, "Start", Toast.LENGTH_LONG).show();
+                    isReader = true;
+                    computedSpeed();
 
+                } else {
+                    handlerStop.sendEmptyMessage(1);
+                    Toast.makeText(ReadOrWriteActivity.this, msg.getRtMsg(), Toast.LENGTH_LONG).show();
 
-                    }
-                } else if (type.getCheckedRadioButtonId() == R.id.b) {
-                    MsgBaseInventory6b msg = new MsgBaseInventory6b();
-                    msg.setAntennaEnable(EnumG.AntennaNo_1);
-                    if (way.getCheckedRadioButtonId() == R.id.single) {
-                        msg.setInventoryMode(EnumG.InventoryMode_Single);
-                    } else {
-                        msg.setInventoryMode(EnumG.InventoryMode_Inventory);
-                    }
-                    if (isChecked[1]) {
-                        user6bParam = new Param6bReadUserdata();
-                        user6bParam.setStart(0);
-                        user6bParam.setLen(10);
-                        msg.setReadUserdata(user6bParam);
-                    }
-                    msg.setArea(EnumG.ReadMode6b_Tid);
-                    client.sendSynMsg(msg);
-                    if (0x00 == msg.getRtCode()) {
-                        Toast.makeText(ReadOrWriteActivity.this, "Start", Toast.LENGTH_LONG).show();
-                        isReader = true;
-                        computedSpeed();
-                        soundTask();
-                    } else {
-                        handlerStop.sendEmptyMessage(1);
-                        Toast.makeText(ReadOrWriteActivity.this, msg.getRtMsg(), Toast.LENGTH_LONG).show();
-
-                    }
-                } else if (type.getCheckedRadioButtonId() == R.id.gb) {
-                    MsgBaseInventoryGb msg = new MsgBaseInventoryGb();
-                    msg.setAntennaEnable(EnumG.AntennaNo_1);
-                    if (way.getCheckedRadioButtonId() == R.id.single) {
-                        msg.setInventoryMode(EnumG.InventoryMode_Single);
-                    } else {
-                        msg.setInventoryMode(EnumG.InventoryMode_Inventory);
-                    }
-                    if (isChecked[0]) {
-                        ParamEpcReadTid tid = new ParamEpcReadTid();
-                        tid.setMode(EnumG.ParamTidMode_Auto);
-                        tid.setLen(6);
-                        msg.setReadTid(tid);
-                    }
-                    if (isChecked[1]) {
-                        ParamGbReadUserdata gbReadUserdata = new ParamGbReadUserdata();
-                        gbReadUserdata.setStart(4);//字
-                        gbReadUserdata.setLen(1);//字
-                        gbReadUserdata.setChildArea(0x30);
-                        msg.setReadUserdata(gbReadUserdata);
-                    }
-                    client.sendSynMsg(msg);
-                    if (0x00 == msg.getRtCode()) {
-                        Toast.makeText(ReadOrWriteActivity.this, "Start", Toast.LENGTH_LONG).show();
-                        isReader = true;
-                        computedSpeed();
-                        soundTask();
-                    } else {
-                        handlerStop.sendEmptyMessage(1);
-                        Toast.makeText(ReadOrWriteActivity.this, msg.getRtMsg(), Toast.LENGTH_LONG).show();
-                    }
-                }else if (type.getCheckedRadioButtonId() == R.id.gjb) {
-                    MsgBaseInventoryGJb msg = new MsgBaseInventoryGJb();
-                    msg.setAntennaEnable(EnumG.AntennaNo_1);
-                    if (way.getCheckedRadioButtonId() == R.id.single) {
-                        msg.setInventoryMode(EnumG.InventoryMode_Single);
-                    } else {
-                        msg.setInventoryMode(EnumG.InventoryMode_Inventory);
-                    }
-                    if (isChecked[0]) {
-                        ParamEpcReadTid tid = new ParamEpcReadTid();
-                        tid.setMode(EnumG.ParamTidMode_Auto);
-                        tid.setLen(6);
-                        msg.setReadTid(tid);
-                    }
-                    if (isChecked[1]) {
-                        userParam = new ParamEpcReadUserdata();
-                        userParam.setStart(0);
-                        userParam.setLen(2);
-                        msg.setReadUserdata(userParam);
-                    }
-
-                    client.sendSynMsg(msg);
-                    if (0x00 == msg.getRtCode()) {
-                        Toast.makeText(ReadOrWriteActivity.this, "Start", Toast.LENGTH_LONG).show();
-                        isReader = true;
-                        computedSpeed();
-                        soundTask();
-                    } else {
-                        handlerStop.sendEmptyMessage(1);
-                        Toast.makeText(ReadOrWriteActivity.this, msg.getRtMsg(), Toast.LENGTH_LONG).show();
-                    }
                 }
+
+
             } else {
                 stopRead();
                 Toast.makeText(ReadOrWriteActivity.this, getResources().getString(R.string.read_card_being), Toast.LENGTH_LONG).show();
@@ -479,7 +342,7 @@ public class ReadOrWriteActivity extends Activity {
             @Override
             public void run() {
                 String toTime = secToTime(++time);
-                timeCount.setText(toTime + " (s)");
+               // timeCount.setText(toTime + " (s)");
                 long before = 0;
                 long after = 0;
                 Long afterValue = rateMap.get("after");
@@ -489,16 +352,16 @@ public class ReadOrWriteActivity extends Activity {
                 synchronized (tagInfoList) {
                     tagInfoList.clear();
                     tagInfoList.addAll(tagInfoMap.values());
+
+
                 }
                 adapter.notifyData(tagInfoList);
                 long readCounts = getReadCount(tagInfoList);
-                readCount.setText(readCounts + "");
-                tagCount.setText(tagInfoList.size() + "");
                 rateMap.put("after", readCounts);
                 after = readCounts;
                 if (after >= before) {
                     rateValue = after - before;
-                    speed.setText(rateValue + " (t/s)");
+                   // speed.setText(rateValue + " (t/s)");
                 }
                 //每隔1s循环执行run方法
                 mHandler.postDelayed(this, 1000);
@@ -508,18 +371,8 @@ public class ReadOrWriteActivity extends Activity {
         mHandler.postDelayed(r, 1000);
     }
 
-    private void soundTask() {
-        timeTask = new Runnable() {
-            @Override
-            public void run() {
-                if (rateValue != 0) {
-                    //UtilSound.play(1, 0);
-                }
-                soundHandler.postDelayed(this, 20);
-            }
-        };
-        soundHandler.postDelayed(timeTask, 0);
-    }
+
+
 
     //初始化面板
     private void initPane() {
@@ -529,10 +382,6 @@ public class ReadOrWriteActivity extends Activity {
         tagInfoMap.clear();
         tagInfoList.clear();
         adapter.notifyData(tagInfoList);
-        tagCount.setText(0 + "");
-        readCount.setText(0 + "");
-        timeCount.setText("00:00:00" + " (s)");
-        speed.setText(0 + " (t/s)");
         adapter.setThisPosition(null);
 
     }
@@ -541,9 +390,9 @@ public class ReadOrWriteActivity extends Activity {
     private void upDataPane() {
         tagInfoList.clear();
         tagInfoList.addAll(tagInfoMap.values());
-        adapter.notifyData(tagInfoList);
-        readCount.setText(getReadCount(tagInfoList) + "");
-        tagCount.setText(tagInfoList.size() + "");
+        //adapter.notifyData(tagInfoList);
+
+
     }
 
 

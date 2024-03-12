@@ -1,39 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <!-- Title -->
+    <TextView
+        android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dashboard"
+        android:textSize="24sp"
+        android:textStyle="bold"
         android:gravity="center"
-        android:orientation="vertical"
-        android:weightSum="1">
+        android:padding="16dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"/>
 
-        <TextView
+    <!-- Grid Layout for Tiles -->
+    <GridLayout
+
+        android:layout_margin="@dimen/layout_margin_15"
+        android:useDefaultMargins="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle"
+        android:layout_marginTop="12dp"
+        android:columnCount="3"
+        android:padding="16dp"
+        android:rowCount="2">
+
+        <!-- Tile 1 -->
+        <RelativeLayout
+            android:id="@+id/tile1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Scanning POC"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_weight="1"
+            android:background="@drawable/dashboard_tile_background"
+            android:padding="16dp">
 
+            <!-- Add your content for tile 1 here -->
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/register" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="Map"
+                android:textColor="@android:color/black" />
 
-        <Button
-            android:id="@+id/rf_reader_button"
+        </RelativeLayout>
+
+        <!-- Tile 2 -->
+        <RelativeLayout
+            android:id="@+id/tile2"
+            android:layout_width="102dp"
+            android:layout_height="124dp"
+            android:layout_weight="1"
+            android:background="@drawable/dashboard_tile_background"
+            android:padding="16dp">
+
+            <!-- Add your content for tile 2 here -->
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/register" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="Tile 2"
+                android:textColor="@android:color/black" />
+
+        </RelativeLayout>
+
+        <!-- Tile 3 -->
+        <RelativeLayout
+            android:id="@+id/tile3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Open RF Reader!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_weight="1"
+            android:background="@drawable/dashboard_tile_background"
+            android:padding="16dp">
+
+            <!-- Add your content for tile 3 here -->
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/register" />
 
 
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView3"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="Tile 3"
+                android:textColor="@android:color/black" />
+
+        </RelativeLayout>
+
+        <!-- Tile 4 -->
+        <RelativeLayout
+            android:id="@+id/tile4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/dashboard_tile_background"
+            android:padding="16dp">
+
+            <!-- Add your content for tile 4 here -->
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/register" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView4"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="Tile 4"
+                android:textColor="@android:color/black" />
+
+        </RelativeLayout>
+
+    </GridLayout>
+
+</RelativeLayout>
